@@ -32,7 +32,6 @@ class UpdateProjectRequest extends FormRequest
             ],
             'image' => [
                 'string',
-                'required',
             ],
             'price_kg' => [
                 'numeric',
