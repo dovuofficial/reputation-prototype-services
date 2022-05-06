@@ -30,7 +30,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::resource('projects', ProjectController::class, ['except' => ['store', 'update', 'destroy']]);
 
     // Staked Tokens To Project
-    Route::resource('staked-tokens-to-projects', StakedTokensToProjectController::class, ['except' => ['store', 'update', 'destroy', 'create', 'edit']]);
+    Route::resource('staked-tokens-to-projects', StakedTokensToProjectController::class, ['except' => ['store', 'update', 'destroy']]);
 });
 
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth']], function () {

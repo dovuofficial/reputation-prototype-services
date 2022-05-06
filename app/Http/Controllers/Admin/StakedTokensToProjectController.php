@@ -17,6 +17,20 @@ class StakedTokensToProjectController extends Controller
         return view('admin.staked-tokens-to-project.index');
     }
 
+    public function create()
+    {
+        abort_if(Gate::denies('staked_tokens_to_project_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        return view('admin.staked-tokens-to-project.create');
+    }
+
+    public function edit(StakedTokensToProject $stakedTokensToProject)
+    {
+        abort_if(Gate::denies('staked_tokens_to_project_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        return view('admin.staked-tokens-to-project.edit', compact('stakedTokensToProject'));
+    }
+
     public function show(StakedTokensToProject $stakedTokensToProject)
     {
         abort_if(Gate::denies('staked_tokens_to_project_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
