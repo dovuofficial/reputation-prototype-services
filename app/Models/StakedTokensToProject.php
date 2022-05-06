@@ -42,6 +42,14 @@ class StakedTokensToProject extends Model
         'dov_staked',
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    protected $primaryKey = 'account_id';
+
     public function project()
     {
         return $this->belongsTo(Project::class);
