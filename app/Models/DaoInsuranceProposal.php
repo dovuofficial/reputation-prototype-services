@@ -8,33 +8,31 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class StakedTokensToProject extends Model
+class DaoInsuranceProposal extends Model
 {
     use HasFactory;
     use HasAdvancedFilter;
     use SoftDeletes;
 
-    public $table = 'staked_tokens_to_projects';
+    public $table = 'dao_insurance_proposals';
 
     public $filterable = [
         'id',
         'project.name',
-        'hedera_account',
-        'dov_staked',
-        'surrendered_dov',
+        'description',
+        'percentage',
     ];
 
     public $orderable = [
         'id',
         'project.name',
-        'hedera_account',
-        'dov_staked',
-        'surrendered_dov',
-        'is_closed',
+        'description',
+        'percentage',
+        'has_liquidated',
     ];
 
     protected $casts = [
-        'is_closed' => 'boolean',
+        'has_liquidated' => 'boolean',
     ];
 
     protected $dates = [
@@ -43,18 +41,11 @@ class StakedTokensToProject extends Model
         'deleted_at',
     ];
 
-    protected $hidden = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
-
     protected $fillable = [
         'project_id',
-        'hedera_account',
-        'dov_staked',
-        'surrendered_dov',
-        'is_closed'
+        'description',
+        'percentage',
+        'has_liquidated',
     ];
 
     public function project()

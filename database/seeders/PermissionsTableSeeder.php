@@ -110,6 +110,26 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 25,
                 'title' => 'staked_tokens_to_project_access',
             ],
+            [
+                'id'    => 26,
+                'title' => 'dao_insurance_proposal_create',
+            ],
+            [
+                'id'    => 27,
+                'title' => 'dao_insurance_proposal_edit',
+            ],
+            [
+                'id'    => 28,
+                'title' => 'dao_insurance_proposal_show',
+            ],
+            [
+                'id'    => 29,
+                'title' => 'dao_insurance_proposal_delete',
+            ],
+            [
+                'id'    => 30,
+                'title' => 'dao_insurance_proposal_access',
+            ],
         ];
 
         Permission::insert($permissions);
