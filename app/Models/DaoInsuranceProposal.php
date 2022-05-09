@@ -8,32 +8,31 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Project extends Model
+class DaoInsuranceProposal extends Model
 {
     use HasFactory;
     use HasAdvancedFilter;
     use SoftDeletes;
 
-    public $table = 'projects';
-
-    public $orderable = [
-        'id',
-        'name',
-        'image',
-        'price_kg',
-        'verified_kg',
-        'collateral_risk',
-        'staked_tokens',
-    ];
+    public $table = 'dao_insurance_proposals';
 
     public $filterable = [
         'id',
-        'name',
-        'image',
-        'price_kg',
-        'verified_kg',
-        'collateral_risk',
-        'staked_tokens',
+        'project.name',
+        'description',
+        'percentage',
+    ];
+
+    public $orderable = [
+        'id',
+        'project.name',
+        'description',
+        'percentage',
+        'has_liquidated',
+    ];
+
+    protected $casts = [
+        'has_liquidated' => 'boolean',
     ];
 
     protected $dates = [
@@ -43,13 +42,16 @@ class Project extends Model
     ];
 
     protected $fillable = [
-        'name',
-        'image',
-        'price_kg',
-        'verified_kg',
-        'collateral_risk',
-        'staked_tokens',
+        'project_id',
+        'description',
+        'percentage',
+        'has_liquidated',
     ];
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

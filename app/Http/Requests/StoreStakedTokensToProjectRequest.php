@@ -40,6 +40,12 @@ class StoreStakedTokensToProjectRequest extends FormRequest
                 'max:2147483647',
                 'required',
             ],
+            'surrendered_dov' => [
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+                'nullable',
+            ],
         ];
     }
 }
