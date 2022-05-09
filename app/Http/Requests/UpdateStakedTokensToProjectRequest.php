@@ -25,21 +25,21 @@ class UpdateStakedTokensToProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'project_id' => [
-                'integer',
-                'exists:projects,id',
-                'required',
-            ],
-            'hedera_account' => [
-                'string',
-                'required',
-            ],
             'dov_staked' => [
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-                'required',
             ],
+            'surrendered_dov' => [
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+                'nullable',
+            ],
+            'is_closed' => [
+                'boolean',
+                'nullable',
+            ]
         ];
     }
 }

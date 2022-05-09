@@ -8,16 +8,16 @@
                 @endforeach
             </select>
 
-            @can('staked_tokens_to_project_delete')
+            @can('dao_insurance_proposal_delete')
                 <button class="btn btn-rose ml-3 disabled:opacity-50 disabled:cursor-not-allowed" type="button" wire:click="confirm('deleteSelected')" wire:loading.attr="disabled" {{ $this->selectedCount ? '' : 'disabled' }}>
                     {{ __('Delete Selected') }}
                 </button>
             @endcan
 
             @if(file_exists(app_path('Http/Livewire/ExcelExport.php')))
-                <livewire:excel-export model="StakedTokensToProject" format="csv" />
-                <livewire:excel-export model="StakedTokensToProject" format="xlsx" />
-                <livewire:excel-export model="StakedTokensToProject" format="pdf" />
+                <livewire:excel-export model="DaoInsuranceProposal" format="csv" />
+                <livewire:excel-export model="DaoInsuranceProposal" format="xlsx" />
+                <livewire:excel-export model="DaoInsuranceProposal" format="pdf" />
             @endif
 
 
@@ -41,73 +41,66 @@
                         <th class="w-9">
                         </th>
                         <th class="w-28">
-                            {{ trans('cruds.stakedTokensToProject.fields.id') }}
+                            {{ trans('cruds.daoInsuranceProposal.fields.id') }}
                             @include('components.table.sort', ['field' => 'id'])
                         </th>
                         <th>
-                            {{ trans('cruds.stakedTokensToProject.fields.project') }}
+                            {{ trans('cruds.daoInsuranceProposal.fields.project') }}
                             @include('components.table.sort', ['field' => 'project.name'])
                         </th>
                         <th>
-                            {{ trans('cruds.stakedTokensToProject.fields.hedera_account') }}
-                            @include('components.table.sort', ['field' => 'hedera_account'])
+                            {{ trans('cruds.daoInsuranceProposal.fields.description') }}
+                            @include('components.table.sort', ['field' => 'description'])
                         </th>
                         <th>
-                            {{ trans('cruds.stakedTokensToProject.fields.dov_staked') }}
-                            @include('components.table.sort', ['field' => 'dov_staked'])
+                            {{ trans('cruds.daoInsuranceProposal.fields.percentage') }}
+                            @include('components.table.sort', ['field' => 'percentage'])
                         </th>
                         <th>
-                            {{ trans('cruds.stakedTokensToProject.fields.surrendered_dov') }}
-                            @include('components.table.sort', ['field' => 'surrendered_dov'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.stakedTokensToProject.fields.is_closed') }}
-                            @include('components.table.sort', ['field' => 'is_closed'])
+                            {{ trans('cruds.daoInsuranceProposal.fields.has_liquidated') }}
+                            @include('components.table.sort', ['field' => 'has_liquidated'])
                         </th>
                         <th>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($stakedTokensToProjects as $stakedTokensToProject)
+                    @forelse($daoInsuranceProposals as $daoInsuranceProposal)
                         <tr>
                             <td>
-                                <input type="checkbox" value="{{ $stakedTokensToProject->id }}" wire:model="selected">
+                                <input type="checkbox" value="{{ $daoInsuranceProposal->id }}" wire:model="selected">
                             </td>
                             <td>
-                                {{ $stakedTokensToProject->id }}
+                                {{ $daoInsuranceProposal->id }}
                             </td>
                             <td>
-                                @if($stakedTokensToProject->project)
-                                    <span class="badge badge-relationship">{{ $stakedTokensToProject->project->name ?? '' }}</span>
+                                @if($daoInsuranceProposal->project)
+                                    <span class="badge badge-relationship">{{ $daoInsuranceProposal->project->name ?? '' }}</span>
                                 @endif
                             </td>
                             <td>
-                                {{ $stakedTokensToProject->hedera_account }}
+                                {{ $daoInsuranceProposal->description }}
                             </td>
                             <td>
-                                {{ $stakedTokensToProject->dov_staked }}
+                                {{ $daoInsuranceProposal->percentage }}
                             </td>
                             <td>
-                                {{ $stakedTokensToProject->surrendered_dov }}
-                            </td>
-                            <td>
-                                <input class="disabled:opacity-50 disabled:cursor-not-allowed" type="checkbox" disabled {{ $stakedTokensToProject->is_closed ? 'checked' : '' }}>
+                                <input class="disabled:opacity-50 disabled:cursor-not-allowed" type="checkbox" disabled {{ $daoInsuranceProposal->has_liquidated ? 'checked' : '' }}>
                             </td>
                             <td>
                                 <div class="flex justify-end">
-                                    @can('staked_tokens_to_project_show')
-                                        <a class="btn btn-sm btn-info mr-2" href="{{ route('admin.staked-tokens-to-projects.show', $stakedTokensToProject) }}">
+                                    @can('dao_insurance_proposal_show')
+                                        <a class="btn btn-sm btn-info mr-2" href="{{ route('admin.dao-insurance-proposals.show', $daoInsuranceProposal) }}">
                                             {{ trans('global.view') }}
                                         </a>
                                     @endcan
-                                    @can('staked_tokens_to_project_edit')
-                                        <a class="btn btn-sm btn-success mr-2" href="{{ route('admin.staked-tokens-to-projects.edit', $stakedTokensToProject) }}">
+                                    @can('dao_insurance_proposal_edit')
+                                        <a class="btn btn-sm btn-success mr-2" href="{{ route('admin.dao-insurance-proposals.edit', $daoInsuranceProposal) }}">
                                             {{ trans('global.edit') }}
                                         </a>
                                     @endcan
-                                    @can('staked_tokens_to_project_delete')
-                                        <button class="btn btn-sm btn-rose mr-2" type="button" wire:click="confirm('delete', {{ $stakedTokensToProject->id }})" wire:loading.attr="disabled">
+                                    @can('dao_insurance_proposal_delete')
+                                        <button class="btn btn-sm btn-rose mr-2" type="button" wire:click="confirm('delete', {{ $daoInsuranceProposal->id }})" wire:loading.attr="disabled">
                                             {{ trans('global.delete') }}
                                         </button>
                                     @endcan
@@ -134,7 +127,7 @@
                     {{ __('Entries selected') }}
                 </p>
             @endif
-            {{ $stakedTokensToProjects->links() }}
+            {{ $daoInsuranceProposals->links() }}
         </div>
     </div>
 </div>

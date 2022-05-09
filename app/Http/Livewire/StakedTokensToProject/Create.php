@@ -14,8 +14,9 @@ class Create extends Component
 
     public function mount(StakedTokensToProject $stakedTokensToProject)
     {
-        $this->stakedTokensToProject             = $stakedTokensToProject;
-        $this->stakedTokensToProject->dov_staked = '0';
+        $this->stakedTokensToProject                  = $stakedTokensToProject;
+        $this->stakedTokensToProject->dov_staked      = '0';
+        $this->stakedTokensToProject->surrendered_dov = '0';
         $this->initListsForFields();
     }
 
@@ -50,6 +51,12 @@ class Create extends Component
                 'min:-2147483648',
                 'max:2147483647',
                 'required',
+            ],
+            'stakedTokensToProject.surrendered_dov' => [
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+                'nullable',
             ],
         ];
     }

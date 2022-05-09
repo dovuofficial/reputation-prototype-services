@@ -9,6 +9,7 @@ use App\Http\Resources\Admin\StakedTokensToProjectResource;
 use App\Models\StakedTokensToProject;
 use Gate;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 
 class StakedTokensToProjectApiController extends Controller
 {
@@ -46,13 +47,12 @@ class StakedTokensToProjectApiController extends Controller
             ->where('project_id', $project)
             ->get();
 
-
         return new StakedTokensToProjectResource($stakedTokensToProject->load(['project']));
     }
 
-    public function update(UpdateStakedTokensToProjectRequest $request, StakedTokensToProject $stakedTokensToProject)
+    public function update(UpdateStakedTokensToProjectRequest $request, StakedTokensToProject $stakedTokensToProject, $id)
     {
-        $stakedTokensToProject->update($request->validated());
+        StakedTokensToProject::find($id)->update($request->validated());
 
         return (new StakedTokensToProjectResource($stakedTokensToProject))
             ->response()

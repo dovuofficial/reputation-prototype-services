@@ -51,6 +51,22 @@
                                 {{ $stakedTokensToProject->dov_staked }}
                             </td>
                         </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.stakedTokensToProject.fields.surrendered_dov') }}
+                            </th>
+                            <td>
+                                {{ $stakedTokensToProject->surrendered_dov }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.stakedTokensToProject.fields.is_closed') }}
+                            </th>
+                            <td>
+                                <input class="disabled:opacity-50 disabled:cursor-not-allowed" type="checkbox" disabled {{ $stakedTokensToProject->is_closed ? 'checked' : '' }}>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

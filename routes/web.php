@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DaoInsuranceProposalController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProjectController;
@@ -31,6 +32,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
 
     // Staked Tokens To Project
     Route::resource('staked-tokens-to-projects', StakedTokensToProjectController::class, ['except' => ['store', 'update', 'destroy']]);
+
+    // Dao Insurance Proposal
+    Route::resource('dao-insurance-proposals', DaoInsuranceProposalController::class, ['except' => ['store', 'update', 'destroy']]);
 });
 
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth']], function () {

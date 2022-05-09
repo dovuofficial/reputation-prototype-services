@@ -1,60 +1,58 @@
 <?php
 
-namespace App\Http\Livewire\StakedTokensToProject;
+namespace App\Http\Livewire\DaoInsuranceProposal;
 
+use App\Models\DaoInsuranceProposal;
 use App\Models\Project;
-use App\Models\StakedTokensToProject;
 use Livewire\Component;
 
 class Edit extends Component
 {
     public array $listsForFields = [];
 
-    public StakedTokensToProject $stakedTokensToProject;
+    public DaoInsuranceProposal $daoInsuranceProposal;
 
-    public function mount(StakedTokensToProject $stakedTokensToProject)
+    public function mount(DaoInsuranceProposal $daoInsuranceProposal)
     {
-        $this->stakedTokensToProject = $stakedTokensToProject;
+        $this->daoInsuranceProposal = $daoInsuranceProposal;
         $this->initListsForFields();
     }
 
     public function render()
     {
-        return view('livewire.staked-tokens-to-project.edit');
+        return view('livewire.dao-insurance-proposal.edit');
     }
 
     public function submit()
     {
         $this->validate();
 
-        $this->stakedTokensToProject->save();
+        $this->daoInsuranceProposal->save();
 
-        return redirect()->route('admin.staked-tokens-to-projects.index');
+        return redirect()->route('admin.dao-insurance-proposals.index');
     }
 
     protected function rules(): array
     {
         return [
-            'stakedTokensToProject.project_id' => [
+            'daoInsuranceProposal.project_id' => [
                 'integer',
                 'exists:projects,id',
                 'required',
             ],
-            'stakedTokensToProject.hedera_account' => [
+            'daoInsuranceProposal.description' => [
                 'string',
+                'min:1',
                 'required',
             ],
-            'stakedTokensToProject.dov_staked' => [
+            'daoInsuranceProposal.percentage' => [
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
                 'required',
             ],
-            'stakedTokensToProject.surrendered_dov' => [
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-                'nullable',
+            'daoInsuranceProposal.has_liquidated' => [
+                'boolean',
             ],
         ];
     }

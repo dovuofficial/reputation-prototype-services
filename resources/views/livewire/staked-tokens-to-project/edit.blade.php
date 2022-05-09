@@ -30,6 +30,16 @@
             {{ trans('cruds.stakedTokensToProject.fields.dov_staked_helper') }}
         </div>
     </div>
+    <div class="form-group {{ $errors->has('stakedTokensToProject.surrendered_dov') ? 'invalid' : '' }}">
+        <label class="form-label" for="surrendered_dov">{{ trans('cruds.stakedTokensToProject.fields.surrendered_dov') }}</label>
+        <input class="form-control" type="number" name="surrendered_dov" id="surrendered_dov" wire:model.defer="stakedTokensToProject.surrendered_dov" step="1">
+        <div class="validation-message">
+            {{ $errors->first('stakedTokensToProject.surrendered_dov') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.stakedTokensToProject.fields.surrendered_dov_helper') }}
+        </div>
+    </div>
 
     <div class="form-group">
         <button class="btn btn-indigo mr-2" type="submit">
