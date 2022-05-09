@@ -16,18 +16,25 @@ class StakedTokensToProject extends Model
 
     public $table = 'staked_tokens_to_projects';
 
-    public $orderable = [
-        'id',
-        'project.name',
-        'hedera_account',
-        'dov_staked',
-    ];
-
     public $filterable = [
         'id',
         'project.name',
         'hedera_account',
         'dov_staked',
+        'surrendered_dov',
+    ];
+
+    public $orderable = [
+        'id',
+        'project.name',
+        'hedera_account',
+        'dov_staked',
+        'surrendered_dov',
+        'is_closed',
+    ];
+
+    protected $casts = [
+        'is_closed' => 'boolean',
     ];
 
     protected $dates = [
@@ -48,7 +55,13 @@ class StakedTokensToProject extends Model
         'deleted_at',
     ];
 
-    protected $primaryKey = 'account_id';
+    protected $fillable = [
+        'project_id',
+        'hedera_account',
+        'dov_staked',
+        'surrendered_dov',
+        'is_closed'
+    ];
 
     public function project()
     {
