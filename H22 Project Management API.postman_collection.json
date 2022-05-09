@@ -30,16 +30,16 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "Example",
-									"type": "text"
-								},
+							"mode": "urlencoded",
+							"urlencoded": [
 								{
 									"key": "image",
 									"value": "https://cataas.com/cat",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Hello Example",
 									"type": "text"
 								}
 							]
@@ -80,22 +80,22 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
+							"mode": "urlencoded",
+							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Example",
+									"value": "Maple Leaf Ridge",
 									"type": "text"
 								},
 								{
-									"key": "image",
-									"value": "https://cataas.com/cat",
+									"key": "verified_kg",
+									"value": "100",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{domain}}/api/v1/projects/1?name=example2&collateral_risk=100&staked_tokens=2",
+							"raw": "{{domain}}/api/v1/projects/1",
 							"host": [
 								"{{domain}}"
 							],
@@ -104,20 +104,59 @@
 								"v1",
 								"projects",
 								"1"
-							],
-							"query": [
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Project and Staked tokens",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
 								{
 									"key": "name",
-									"value": "example2"
+									"value": "Maple Leaf Ridge",
+									"type": "text",
+									"disabled": true
 								},
 								{
-									"key": "collateral_risk",
-									"value": "100"
-								},
-								{
-									"key": "staked_tokens",
-									"value": "2"
+									"key": "verified_kg",
+									"value": "100",
+									"type": "text",
+									"disabled": true
 								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/v1/projects/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"1"
 							]
 						}
 					},
@@ -340,12 +379,14 @@
 								{
 									"key": "hedera_account",
 									"value": "0.0.1156",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "dov_staked",
 									"value": "100",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
