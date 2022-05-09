@@ -11,4 +11,4 @@ In short, the API provides functionality for two main purposes:
 - Project management as a CRUD
 - Tracking account stakes for a given project as a CRUD
 
-In addition, the admin panel provided has a nice UI layout for those that want to adjust by hand.
+In addition, the admin panel provided has a nice UI layout for those that want to adjust by hand...
