@@ -92,22 +92,30 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 21,
-                'title' => 'project_access',
+                'title' => 'project_delete',
             ],
             [
                 'id'    => 22,
-                'title' => 'staked_tokens_to_project_create',
+                'title' => 'project_access',
             ],
             [
                 'id'    => 23,
-                'title' => 'staked_tokens_to_project_edit',
+                'title' => 'staked_tokens_to_project_create',
             ],
             [
                 'id'    => 24,
-                'title' => 'staked_tokens_to_project_show',
+                'title' => 'staked_tokens_to_project_edit',
             ],
             [
                 'id'    => 25,
+                'title' => 'staked_tokens_to_project_show',
+            ],
+            [
+                'id'    => 26,
+                'title' => 'staked_tokens_to_project_delete',
+            ],
+            [
+                'id'    => 27,
                 'title' => 'staked_tokens_to_project_access',
             ],
         ];
