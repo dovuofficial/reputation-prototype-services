@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\V1\Admin\StakedTokensToProjectApiController;
 
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum']], function () {
     // Projects
-    Route::apiResource('projects', ProjectApiController::class, ['only' => ['index', 'show', 'store', 'update']]);
+    Route::apiResource('projects', ProjectApiController::class, ['only' => ['index', 'show', 'store', 'update', 'destroy']]);
 
     Route::apiResource('staked', StakedTokensToProjectApiController::class, ['only' => ['index', 'show', 'store', 'update']]);
 
