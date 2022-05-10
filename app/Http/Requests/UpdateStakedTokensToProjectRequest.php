@@ -29,6 +29,7 @@ class UpdateStakedTokensToProjectRequest extends FormRequest
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
+                'required',
             ],
             'surrendered_dov' => [
                 'integer',
@@ -38,8 +39,18 @@ class UpdateStakedTokensToProjectRequest extends FormRequest
             ],
             'is_closed' => [
                 'boolean',
+                'nullable'
+            ],
+            'stake_ends_at' => [
+                'string',
                 'nullable',
-            ]
+            ],
+            'number_days' => [
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+                'nullable',
+            ],
         ];
     }
 }

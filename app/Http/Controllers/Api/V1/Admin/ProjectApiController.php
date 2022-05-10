@@ -9,7 +9,6 @@ use App\Http\Resources\Admin\ProjectResource;
 use App\Models\Project;
 use App\Models\StakedTokensToProject;
 use Gate;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class ProjectApiController extends Controller

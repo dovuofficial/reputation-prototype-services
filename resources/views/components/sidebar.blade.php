@@ -106,6 +106,35 @@
                         </a>
                     </li>
                 @endcan
+                @can('token_claiming_access')
+                    <li class="items-center">
+                        <a class="has-sub {{ request()->is("admin/max-claimable-tokens*")||request()->is("admin/account-token-claims*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="#" onclick="window.openSubNav(this)">
+                            <i class="fa-fw fas c-sidebar-nav-icon fa-cogs">
+                            </i>
+                            {{ trans('cruds.tokenClaiming.title') }}
+                        </a>
+                        <ul class="ml-4 subnav hidden">
+                            @can('max_claimable_token_access')
+                                <li class="items-center">
+                                    <a class="{{ request()->is("admin/max-claimable-tokens*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.max-claimable-tokens.index") }}">
+                                        <i class="fa-fw c-sidebar-nav-icon fas fa-balance-scale">
+                                        </i>
+                                        {{ trans('cruds.maxClaimableToken.title') }}
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('account_token_claim_access')
+                                <li class="items-center">
+                                    <a class="{{ request()->is("admin/account-token-claims*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.account-token-claims.index") }}">
+                                        <i class="fa-fw c-sidebar-nav-icon fas fa-cogs">
+                                        </i>
+                                        {{ trans('cruds.accountTokenClaim.title') }}
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
 
                 @if(file_exists(app_path('Http/Controllers/Auth/UserProfileController.php')))
                     @can('auth_profile_edit')

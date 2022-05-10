@@ -50,6 +50,18 @@ class StakedTokensToProjectApiController extends Controller
         return new StakedTokensToProjectResource($stakedTokensToProject->load(['project']));
     }
 
+    public function showStakesForProject($project)
+    {
+        abort_if(Gate::denies('staked_tokens_to_project_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $stakedTokensToProject = StakedTokensToProject::query()
+            ->where('project_id', $project)
+            ->where('is_closed', false)
+            ->get();
+
+        return new StakedTokensToProjectResource($stakedTokensToProject);
+    }
+
     public function update(UpdateStakedTokensToProjectRequest $request, StakedTokensToProject $stakedTokensToProject, $id)
     {
         StakedTokensToProject::find($id)->update($request->validated());

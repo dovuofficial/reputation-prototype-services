@@ -65,6 +65,14 @@
                             @include('components.table.sort', ['field' => 'is_closed'])
                         </th>
                         <th>
+                            {{ trans('cruds.stakedTokensToProject.fields.number_days') }}
+                            @include('components.table.sort', ['field' => 'number_days'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.stakedTokensToProject.fields.stake_ends_at') }}
+                            @include('components.table.sort', ['field' => 'stake_ends_at'])
+                        </th>
+                        <th>
                         </th>
                     </tr>
                 </thead>
@@ -95,21 +103,17 @@
                                 <input class="disabled:opacity-50 disabled:cursor-not-allowed" type="checkbox" disabled {{ $stakedTokensToProject->is_closed ? 'checked' : '' }}>
                             </td>
                             <td>
+                                {{ $stakedTokensToProject->number_days }}
+                            </td>
+                            <td>
+                                {{ $stakedTokensToProject->stake_ends_at }}
+                            </td>
+                            <td>
                                 <div class="flex justify-end">
                                     @can('staked_tokens_to_project_show')
                                         <a class="btn btn-sm btn-info mr-2" href="{{ route('admin.staked-tokens-to-projects.show', $stakedTokensToProject) }}">
                                             {{ trans('global.view') }}
                                         </a>
-                                    @endcan
-                                    @can('staked_tokens_to_project_edit')
-                                        <a class="btn btn-sm btn-success mr-2" href="{{ route('admin.staked-tokens-to-projects.edit', $stakedTokensToProject) }}">
-                                            {{ trans('global.edit') }}
-                                        </a>
-                                    @endcan
-                                    @can('staked_tokens_to_project_delete')
-                                        <button class="btn btn-sm btn-rose mr-2" type="button" wire:click="confirm('delete', {{ $stakedTokensToProject->id }})" wire:loading.attr="disabled">
-                                            {{ trans('global.delete') }}
-                                        </button>
                                     @endcan
                                 </div>
                             </td>

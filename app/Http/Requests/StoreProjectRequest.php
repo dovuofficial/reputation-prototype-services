@@ -32,6 +32,7 @@ class StoreProjectRequest extends FormRequest
             ],
             'image' => [
                 'string',
+                'required',
             ],
             'price_kg' => [
                 'numeric',
@@ -52,7 +53,7 @@ class StoreProjectRequest extends FormRequest
                 'min:-2147483648',
                 'max:2147483647',
                 'nullable',
-            ],
+            ]
         ];
     }
 }

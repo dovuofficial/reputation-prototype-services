@@ -68,8 +68,6 @@
                             {{ trans('cruds.project.fields.staked_tokens') }}
                             @include('components.table.sort', ['field' => 'staked_tokens'])
                         </th>
-                        <th>
-                        </th>
                     </tr>
                 </thead>
                 <tbody>
