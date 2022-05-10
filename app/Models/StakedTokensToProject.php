@@ -22,6 +22,8 @@ class StakedTokensToProject extends Model
         'hedera_account',
         'dov_staked',
         'surrendered_dov',
+        'number_days',
+        'stake_ends_at',
     ];
 
     public $orderable = [
@@ -31,6 +33,8 @@ class StakedTokensToProject extends Model
         'dov_staked',
         'surrendered_dov',
         'is_closed',
+        'number_days',
+        'stake_ends_at',
     ];
 
     protected $casts = [
@@ -43,18 +47,13 @@ class StakedTokensToProject extends Model
         'deleted_at',
     ];
 
-    protected $hidden = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
-
     protected $fillable = [
         'project_id',
         'hedera_account',
         'dov_staked',
         'surrendered_dov',
-        'is_closed'
+        'number_days',
+        'stake_ends_at',
     ];
 
     public function project()

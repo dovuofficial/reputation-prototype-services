@@ -65,6 +65,14 @@
                             @include('components.table.sort', ['field' => 'is_closed'])
                         </th>
                         <th>
+                            {{ trans('cruds.stakedTokensToProject.fields.number_days') }}
+                            @include('components.table.sort', ['field' => 'number_days'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.stakedTokensToProject.fields.stake_ends_at') }}
+                            @include('components.table.sort', ['field' => 'stake_ends_at'])
+                        </th>
+                        <th>
                         </th>
                     </tr>
                 </thead>
@@ -93,6 +101,12 @@
                             </td>
                             <td>
                                 <input class="disabled:opacity-50 disabled:cursor-not-allowed" type="checkbox" disabled {{ $stakedTokensToProject->is_closed ? 'checked' : '' }}>
+                            </td>
+                            <td>
+                                {{ $stakedTokensToProject->number_days }}
+                            </td>
+                            <td>
+                                {{ $stakedTokensToProject->stake_ends_at }}
                             </td>
                             <td>
                                 <div class="flex justify-end">

@@ -32,6 +32,7 @@ class StoreProjectRequest extends FormRequest
             ],
             'image' => [
                 'string',
+                'required',
             ],
             'price_kg' => [
                 'numeric',

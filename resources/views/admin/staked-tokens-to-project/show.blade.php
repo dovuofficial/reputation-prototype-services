@@ -67,6 +67,22 @@
                                 <input class="disabled:opacity-50 disabled:cursor-not-allowed" type="checkbox" disabled {{ $stakedTokensToProject->is_closed ? 'checked' : '' }}>
                             </td>
                         </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.stakedTokensToProject.fields.number_days') }}
+                            </th>
+                            <td>
+                                {{ $stakedTokensToProject->number_days }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.stakedTokensToProject.fields.stake_ends_at') }}
+                            </th>
+                            <td>
+                                {{ $stakedTokensToProject->stake_ends_at }}
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

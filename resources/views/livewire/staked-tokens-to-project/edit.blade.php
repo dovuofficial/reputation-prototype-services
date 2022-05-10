@@ -40,6 +40,26 @@
             {{ trans('cruds.stakedTokensToProject.fields.surrendered_dov_helper') }}
         </div>
     </div>
+    <div class="form-group {{ $errors->has('stakedTokensToProject.number_days') ? 'invalid' : '' }}">
+        <label class="form-label" for="number_days">{{ trans('cruds.stakedTokensToProject.fields.number_days') }}</label>
+        <input class="form-control" type="number" name="number_days" id="number_days" wire:model.defer="stakedTokensToProject.number_days" step="1">
+        <div class="validation-message">
+            {{ $errors->first('stakedTokensToProject.number_days') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.stakedTokensToProject.fields.number_days_helper') }}
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('stakedTokensToProject.stake_ends_at') ? 'invalid' : '' }}">
+        <label class="form-label" for="stake_ends_at">{{ trans('cruds.stakedTokensToProject.fields.stake_ends_at') }}</label>
+        <input class="form-control" type="text" name="stake_ends_at" id="stake_ends_at" wire:model.defer="stakedTokensToProject.stake_ends_at">
+        <div class="validation-message">
+            {{ $errors->first('stakedTokensToProject.stake_ends_at') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.stakedTokensToProject.fields.stake_ends_at_helper') }}
+        </div>
+    </div>
 
     <div class="form-group">
         <button class="btn btn-indigo mr-2" type="submit">
