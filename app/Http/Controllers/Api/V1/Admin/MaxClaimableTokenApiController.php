@@ -17,7 +17,7 @@ class MaxClaimableTokenApiController extends Controller
     {
         abort_if(Gate::denies('max_claimable_token_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new MaxClaimableTokenResource(MaxClaimableToken::all());
+        return new MaxClaimableTokenResource(MaxClaimableToken::first());
     }
 
     public function store(StoreMaxClaimableTokenRequest $request)

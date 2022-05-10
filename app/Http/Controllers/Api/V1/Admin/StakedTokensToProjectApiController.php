@@ -8,8 +8,8 @@ use App\Http\Requests\UpdateStakedTokensToProjectRequest;
 use App\Http\Resources\Admin\StakedTokensToProjectResource;
 use App\Models\StakedTokensToProject;
 use Gate;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 
 class StakedTokensToProjectApiController extends Controller
 {
@@ -17,7 +17,7 @@ class StakedTokensToProjectApiController extends Controller
     {
         abort_if(Gate::denies('staked_tokens_to_project_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new StakedTokensToProjectResource(StakedTokensToProject::with(['project'])->get());
+        return new StakedTokensToProjectResource(StakedTokensToProject::all());
     }
 
     public function store(StoreStakedTokensToProjectRequest $request)
@@ -29,16 +29,42 @@ class StakedTokensToProjectApiController extends Controller
             ->setStatusCode(Response::HTTP_CREATED);
     }
 
-    public function show(StakedTokensToProject $stakedTokensToProject)
+    public function show($account_id)
     {
         abort_if(Gate::denies('staked_tokens_to_project_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $stakedTokensToProject = StakedTokensToProject::with(['project'])->where('hedera_account', $account_id)->get();
+
+        return new StakedTokensToProjectResource($stakedTokensToProject);
+    }
+
+    public function showProjectStake($account_id, $project)
+    {
+        abort_if(Gate::denies('staked_tokens_to_project_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $stakedTokensToProject = StakedTokensToProject::with(['project'])
+            ->where('hedera_account', $account_id)
+            ->where('project_id', $project)
+            ->get();
 
         return new StakedTokensToProjectResource($stakedTokensToProject->load(['project']));
     }
 
-    public function update(UpdateStakedTokensToProjectRequest $request, StakedTokensToProject $stakedTokensToProject)
+    public function showStakesForProject($project)
     {
-        $stakedTokensToProject->update($request->validated());
+        abort_if(Gate::denies('staked_tokens_to_project_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $stakedTokensToProject = StakedTokensToProject::query()
+            ->where('project_id', $project)
+            ->where('is_closed', false)
+            ->get();
+
+        return new StakedTokensToProjectResource($stakedTokensToProject);
+    }
+
+    public function update(UpdateStakedTokensToProjectRequest $request, StakedTokensToProject $stakedTokensToProject, $id)
+    {
+        StakedTokensToProject::find($id)->update($request->validated());
 
         return (new StakedTokensToProjectResource($stakedTokensToProject))
             ->response()

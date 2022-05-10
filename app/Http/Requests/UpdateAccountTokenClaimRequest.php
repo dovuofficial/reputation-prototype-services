@@ -27,7 +27,7 @@ class UpdateAccountTokenClaimRequest extends FormRequest
         return [
             'hedera_account' => [
                 'string',
-                'required',
+//                'required',
             ],
             'amount' => [
                 'integer',

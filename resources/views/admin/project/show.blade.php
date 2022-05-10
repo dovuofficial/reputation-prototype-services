@@ -73,22 +73,6 @@
                                 {{ $project->staked_tokens }}
                             </td>
                         </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.project.fields.unlock_at') }}
-                            </th>
-                            <td>
-                                {{ $project->unlock_at }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.project.fields.days_remaining') }}
-                            </th>
-                            <td>
-                                {{ $project->days_remaining }}
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>

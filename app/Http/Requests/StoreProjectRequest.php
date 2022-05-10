@@ -53,17 +53,7 @@ class StoreProjectRequest extends FormRequest
                 'min:-2147483648',
                 'max:2147483647',
                 'nullable',
-            ],
-            'unlock_at' => [
-                'string',
-                'nullable',
-            ],
-            'days_remaining' => [
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-                'nullable',
-            ],
+            ]
         ];
     }
 }

@@ -60,26 +60,6 @@
             {{ trans('cruds.project.fields.staked_tokens_helper') }}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('project.unlock_at') ? 'invalid' : '' }}">
-        <label class="form-label" for="unlock_at">{{ trans('cruds.project.fields.unlock_at') }}</label>
-        <input class="form-control" type="text" name="unlock_at" id="unlock_at" wire:model.defer="project.unlock_at">
-        <div class="validation-message">
-            {{ $errors->first('project.unlock_at') }}
-        </div>
-        <div class="help-block">
-            {{ trans('cruds.project.fields.unlock_at_helper') }}
-        </div>
-    </div>
-    <div class="form-group {{ $errors->has('project.days_remaining') ? 'invalid' : '' }}">
-        <label class="form-label" for="days_remaining">{{ trans('cruds.project.fields.days_remaining') }}</label>
-        <input class="form-control" type="number" name="days_remaining" id="days_remaining" wire:model.defer="project.days_remaining" step="1">
-        <div class="validation-message">
-            {{ $errors->first('project.days_remaining') }}
-        </div>
-        <div class="help-block">
-            {{ trans('cruds.project.fields.days_remaining_helper') }}
-        </div>
-    </div>
 
     <div class="form-group">
         <button class="btn btn-indigo mr-2" type="submit">

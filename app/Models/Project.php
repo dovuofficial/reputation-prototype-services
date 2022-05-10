@@ -24,8 +24,6 @@ class Project extends Model
         'verified_kg',
         'collateral_risk',
         'staked_tokens',
-        'unlock_at',
-        'days_remaining',
     ];
 
     public $filterable = [
@@ -36,11 +34,15 @@ class Project extends Model
         'verified_kg',
         'collateral_risk',
         'staked_tokens',
-        'unlock_at',
-        'days_remaining',
     ];
 
     protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    protected $hidden = [
         'created_at',
         'updated_at',
         'deleted_at',
@@ -53,8 +55,6 @@ class Project extends Model
         'verified_kg',
         'collateral_risk',
         'staked_tokens',
-        'unlock_at',
-        'days_remaining',
     ];
 
     protected function serializeDate(DateTimeInterface $date)

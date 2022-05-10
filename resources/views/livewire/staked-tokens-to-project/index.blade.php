@@ -115,16 +115,6 @@
                                             {{ trans('global.view') }}
                                         </a>
                                     @endcan
-                                    @can('staked_tokens_to_project_edit')
-                                        <a class="btn btn-sm btn-success mr-2" href="{{ route('admin.staked-tokens-to-projects.edit', $stakedTokensToProject) }}">
-                                            {{ trans('global.edit') }}
-                                        </a>
-                                    @endcan
-                                    @can('staked_tokens_to_project_delete')
-                                        <button class="btn btn-sm btn-rose mr-2" type="button" wire:click="confirm('delete', {{ $stakedTokensToProject->id }})" wire:loading.attr="disabled">
-                                            {{ trans('global.delete') }}
-                                        </button>
-                                    @endcan
                                 </div>
                             </td>
                         </tr>

@@ -46,6 +46,16 @@ class StoreStakedTokensToProjectRequest extends FormRequest
                 'max:2147483647',
                 'nullable',
             ],
+            'stake_ends_at' => [
+                'string',
+                'nullable',
+            ],
+            'number_days' => [
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+                'nullable',
+            ],
         ];
     }
 }

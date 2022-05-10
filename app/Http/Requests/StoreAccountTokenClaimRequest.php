@@ -28,12 +28,13 @@ class StoreAccountTokenClaimRequest extends FormRequest
             'hedera_account' => [
                 'string',
                 'required',
+                'unique:account_token_claims'
             ],
             'amount' => [
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-                'nullable',
+                'required',
             ],
         ];
     }

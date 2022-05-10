@@ -7,8 +7,8 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Resources\Admin\ProjectResource;
 use App\Models\Project;
+use App\Models\StakedTokensToProject;
 use Gate;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class ProjectApiController extends Controller
@@ -43,5 +43,18 @@ class ProjectApiController extends Controller
         return (new ProjectResource($project))
             ->response()
             ->setStatusCode(Response::HTTP_ACCEPTED);
+    }
+
+    public function destroy(Project $project)
+    {
+        // If you can create a project you can delete one.
+        abort_if(Gate::denies('project_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $project->delete();
+
+        // Delete all staked tokens to project
+        StakedTokensToProject::where('project_id', $project->id)->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

@@ -29,18 +29,24 @@ class AccountTokenClaimApiController extends Controller
             ->setStatusCode(Response::HTTP_CREATED);
     }
 
-    public function show(AccountTokenClaim $accountTokenClaim)
+    public function show($id)
     {
         abort_if(Gate::denies('account_token_claim_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new AccountTokenClaimResource($accountTokenClaim);
+        $claimed = AccountTokenClaim::where('hedera_account', $id)->get();
+
+        if (!$claimed->isEmpty()) {
+            return new AccountTokenClaimResource($claimed);
+        }
+
+        return response(null, Response::HTTP_NOT_FOUND);
     }
 
-    public function update(UpdateAccountTokenClaimRequest $request, AccountTokenClaim $accountTokenClaim)
+    public function update(UpdateAccountTokenClaimRequest $request, $hedera_account)
     {
-        $accountTokenClaim->update($request->validated());
+        AccountTokenClaim::where('hedera_account', $hedera_account)->update($request->validated());
 
-        return (new AccountTokenClaimResource($accountTokenClaim))
+        return (new AccountTokenClaimResource([]))
             ->response()
             ->setStatusCode(Response::HTTP_ACCEPTED);
     }

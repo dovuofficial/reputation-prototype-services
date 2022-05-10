@@ -14,6 +14,8 @@ class CreateStakedTokensToProjectsTable extends Migration
             $table->integer('dov_staked');
             $table->integer('surrendered_dov')->nullable();
             $table->boolean('is_closed')->default(0)->nullable();
+            $table->string('stake_ends_at')->nullable();
+            $table->integer('number_days')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

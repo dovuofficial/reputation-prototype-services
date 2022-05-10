@@ -35,6 +35,12 @@ class DaoInsuranceProposal extends Model
         'has_liquidated' => 'boolean',
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
     protected $dates = [
         'created_at',
         'updated_at',
