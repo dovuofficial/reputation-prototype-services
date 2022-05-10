@@ -32,6 +32,7 @@ class StoreProjectRequest extends FormRequest
             ],
             'image' => [
                 'string',
+                'required',
             ],
             'price_kg' => [
                 'numeric',
@@ -48,6 +49,16 @@ class StoreProjectRequest extends FormRequest
                 'nullable',
             ],
             'staked_tokens' => [
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+                'nullable',
+            ],
+            'unlock_at' => [
+                'string',
+                'nullable',
+            ],
+            'days_remaining' => [
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',

@@ -43,18 +43,11 @@ class StakedTokensToProject extends Model
         'deleted_at',
     ];
 
-    protected $hidden = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
-
     protected $fillable = [
         'project_id',
         'hedera_account',
         'dov_staked',
         'surrendered_dov',
-        'is_closed'
     ];
 
     public function project()

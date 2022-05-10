@@ -16,6 +16,8 @@ class CreateProjectsTable extends Migration
             $table->integer('verified_kg')->nullable();
             $table->string('collateral_risk')->nullable();
             $table->integer('staked_tokens')->nullable();
+            $table->string('unlock_at')->nullable();
+            $table->integer('days_remaining')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

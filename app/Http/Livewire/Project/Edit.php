@@ -60,6 +60,16 @@ class Edit extends Component
                 'max:2147483647',
                 'nullable',
             ],
+            'project.unlock_at' => [
+                'string',
+                'nullable',
+            ],
+            'project.days_remaining' => [
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+                'nullable',
+            ],
         ];
     }
 }

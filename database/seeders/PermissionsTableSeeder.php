@@ -130,6 +130,42 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 30,
                 'title' => 'dao_insurance_proposal_access',
             ],
+            [
+                'id'    => 31,
+                'title' => 'token_claiming_access',
+            ],
+            [
+                'id'    => 32,
+                'title' => 'max_claimable_token_create',
+            ],
+            [
+                'id'    => 33,
+                'title' => 'max_claimable_token_edit',
+            ],
+            [
+                'id'    => 34,
+                'title' => 'max_claimable_token_show',
+            ],
+            [
+                'id'    => 35,
+                'title' => 'max_claimable_token_access',
+            ],
+            [
+                'id'    => 36,
+                'title' => 'account_token_claim_create',
+            ],
+            [
+                'id'    => 37,
+                'title' => 'account_token_claim_edit',
+            ],
+            [
+                'id'    => 38,
+                'title' => 'account_token_claim_show',
+            ],
+            [
+                'id'    => 39,
+                'title' => 'account_token_claim_access',
+            ],
         ];
 
         Permission::insert($permissions);
