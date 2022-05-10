@@ -58,6 +58,16 @@ class Create extends Component
                 'max:2147483647',
                 'nullable',
             ],
+            'stakedTokensToProject.number_days' => [
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+                'nullable',
+            ],
+            'stakedTokensToProject.stake_ends_at' => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 

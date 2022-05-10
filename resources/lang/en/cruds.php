@@ -119,6 +119,10 @@ return [
             'surrendered_dov_helper' => ' ',
             'is_closed'              => 'Is Closed',
             'is_closed_helper'       => ' ',
+            'number_days'            => 'Number Days',
+            'number_days_helper'     => ' ',
+            'stake_ends_at'          => 'Stake Ends At',
+            'stake_ends_at_helper'   => 'The epoch representation of stake ending',
         ],
     ],
     'daoInsuranceProposal' => [
