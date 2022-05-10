@@ -8,33 +8,29 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class StakedTokensToProject extends Model
+class AccountTokenClaim extends Model
 {
     use HasFactory;
     use HasAdvancedFilter;
     use SoftDeletes;
 
-    public $table = 'staked_tokens_to_projects';
-
-    public $filterable = [
-        'id',
-        'project.name',
-        'hedera_account',
-        'dov_staked',
-        'surrendered_dov',
-    ];
+    public $table = 'account_token_claims';
 
     public $orderable = [
         'id',
-        'project.name',
         'hedera_account',
-        'dov_staked',
-        'surrendered_dov',
-        'is_closed',
+        'amount',
     ];
 
-    protected $casts = [
-        'is_closed' => 'boolean',
+    public $filterable = [
+        'id',
+        'hedera_account',
+        'amount',
+    ];
+
+    protected $fillable = [
+        'hedera_account',
+        'amount',
     ];
 
     protected $dates = [
@@ -42,18 +38,6 @@ class StakedTokensToProject extends Model
         'updated_at',
         'deleted_at',
     ];
-
-    protected $fillable = [
-        'project_id',
-        'hedera_account',
-        'dov_staked',
-        'surrendered_dov',
-    ];
-
-    public function project()
-    {
-        return $this->belongsTo(Project::class);
-    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

@@ -69,6 +69,14 @@
                             @include('components.table.sort', ['field' => 'staked_tokens'])
                         </th>
                         <th>
+                            {{ trans('cruds.project.fields.unlock_at') }}
+                            @include('components.table.sort', ['field' => 'unlock_at'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.project.fields.days_remaining') }}
+                            @include('components.table.sort', ['field' => 'days_remaining'])
+                        </th>
+                        <th>
                         </th>
                     </tr>
                 </thead>
@@ -98,6 +106,12 @@
                             </td>
                             <td>
                                 {{ $project->staked_tokens }}
+                            </td>
+                            <td>
+                                {{ $project->unlock_at }}
+                            </td>
+                            <td>
+                                {{ $project->days_remaining }}
                             </td>
                             <td>
                                 <div class="flex justify-end">

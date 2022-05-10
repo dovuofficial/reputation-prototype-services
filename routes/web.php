@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\AccountTokenClaimController;
 use App\Http\Controllers\Admin\DaoInsuranceProposalController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\MaxClaimableTokenController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\RoleController;
@@ -35,6 +37,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
 
     // Dao Insurance Proposal
     Route::resource('dao-insurance-proposals', DaoInsuranceProposalController::class, ['except' => ['store', 'update', 'destroy']]);
+
+    // Max Claimable Tokens
+    Route::resource('max-claimable-tokens', MaxClaimableTokenController::class, ['except' => ['store', 'update', 'destroy']]);
+
+    // Account Token Claim
+    Route::resource('account-token-claims', AccountTokenClaimController::class, ['except' => ['store', 'update', 'destroy']]);
 });
 
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth']], function () {
