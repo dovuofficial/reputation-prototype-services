@@ -68,6 +68,8 @@ return [
 
     'contract_owner' => env('HEDERA_CONTRACT_OWNER', '0.0.34095176'),
 
+    'contract_id' => env('HEDERA_CONTRACT_ID', '0.0.34400935'),
+
     'token_id' => env('HEDERA_TOKEN_ID', '0.0.30875555'),
 
     /*
