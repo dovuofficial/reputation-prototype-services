@@ -35,15 +35,11 @@ class StoreStakedTokensToProjectRequest extends FormRequest
                 'required',
             ],
             'dov_staked' => [
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
+                'string',
                 'required',
             ],
             'surrendered_dov' => [
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
+                'string',
                 'nullable',
             ],
             'stake_ends_at' => [
